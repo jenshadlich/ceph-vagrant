@@ -32,4 +32,6 @@ ceph-deploy osd activate ${CEPH_SERVER_NODE}:/var/local/osd0
 #ceph-deploy disk --fs-type ${FS_TYPE} zap ${CEPH_SERVER_NODE}:${JOURNAL_DEVICE}
 #ceph-deploy osd --fs-type ${FS_TYPE} create ${CEPH_SERVER_NODE}:${DATA_DEVICE}:${JOURNAL_DEVICE}
 
+sudo ceph -s
+
 echo "Done."
