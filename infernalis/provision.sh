@@ -14,29 +14,30 @@ echo deb http://download.ceph.com/debian-${CEPH_RELEASE}/ $(lsb_release -sc) mai
 sudo apt-get update > /dev/null
 sudo apt-get install -q -y ceph-deploy
 
-sudo ceph-deploy install --release ${CEPH_RELEASE} ${CEPH_SERVER_NODE}
-sudo ceph-deploy pkg --install librados-dev ${CEPH_SERVER_NODE}
+ceph-deploy install --release ${CEPH_RELEASE} ${CEPH_SERVER_NODE}
+ceph-deploy pkg --install librados-dev ${CEPH_SERVER_NODE}
 
-sudo ceph-deploy new ${CEPH_SERVER_NODE}
+ceph-deploy new ${CEPH_SERVER_NODE}
 echo "osd crush chooseleaf type = 0" >> ceph.conf
 echo "osd pool default size = 1" >> ceph.conf
 
-sudo ceph-deploy install ${CEPH_SERVER_NODE}
-sudo ceph-deploy mon create-initial
+ceph-deploy install ${CEPH_SERVER_NODE}
+ceph-deploy mon create-initial
 
-sudo mkdir /var/local/osd0
+mkdir /var/local/osd0
+chown ceph:ceph /var/local/osd0
 
-sudo ceph-deploy osd prepare ${CEPH_SERVER_NODE}:/var/local/osd0
-sudo ceph-deploy osd activate ${CEPH_SERVER_NODE}:/var/local/osd0
+ceph-deploy osd prepare ${CEPH_SERVER_NODE}:/var/local/osd0
+ceph-deploy osd activate ${CEPH_SERVER_NODE}:/var/local/osd0
 
 #ceph-deploy disk --fs-type ${FS_TYPE} zap ${CEPH_SERVER_NODE}:${DATA_DEVICE}
 #ceph-deploy disk --fs-type ${FS_TYPE} zap ${CEPH_SERVER_NODE}:${JOURNAL_DEVICE}
 #ceph-deploy osd --fs-type ${FS_TYPE} create ${CEPH_SERVER_NODE}:${DATA_DEVICE}:${JOURNAL_DEVICE}
 
 # version
-sudo ceph -v
+ceph -v
 
 # health
-sudo ceph -s
+ceph -s
 
 echo "Done."
