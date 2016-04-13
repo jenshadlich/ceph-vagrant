@@ -4,7 +4,7 @@ export DEBIAN_FRONTEND=noninteractive
 #export DATA_DEVICE=sdb
 #export JOURNAL_DEVICE=sdc
 #export FS_TYPE=xfs
-export CEPH_SERVER_NODE=ceph-firefly
+export CEPH_SERVER_NODE=$(hostname -s)
 export CEPH_RELEASE=firefly
 
 wget -q -O- 'https://download.ceph.com/keys/release.asc' | sudo apt-key add -
