@@ -4,7 +4,7 @@ export DEBIAN_FRONTEND=noninteractive
 #export DATA_DEVICE=sdb
 #export JOURNAL_DEVICE=sdc
 #export FS_TYPE=xfs
-export CEPH_SERVER_NODE=ceph-infernalis
+export CEPH_SERVER_NODE=$(hostname -s)
 export CEPH_RELEASE=infernalis
 export CEPH_RGW_PORT=8888
 
@@ -66,7 +66,7 @@ echo "rgw frontends = civetweb port=${CEPH_RGW_PORT}" >> ceph.conf
 echo "" >> ceph.conf
 echo "[client.rgw.${CEPH_SERVER_NODE}]" >> ceph.conf
 echo "host = ${CEPH_SERVER_NODE}" >> ceph.conf
-echo "log file = /var/log/radosgw/client.rgw.${CEPH_SERVER_NODE}.log" >> ceph.conf
+#echo "log file = /var/log/radosgw/client.rgw.${CEPH_SERVER_NODE}.log" >> ceph.conf
 
 ceph-deploy --overwrite-conf config push ${CEPH_SERVER_NODE}
 service radosgw restart id="rgw.${CEPH_SERVER_NODE}"
