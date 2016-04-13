@@ -12,7 +12,7 @@ wget -q -O- 'https://download.ceph.com/keys/release.asc' | sudo apt-key add -
 
 echo deb http://download.ceph.com/debian-${CEPH_RELEASE}/ $(lsb_release -sc) main | sudo tee /etc/apt/sources.list.d/ceph.list
 
-sudo apt-get update -q > /dev/null
+apt-get update -q > /dev/null
 apt-get install -q -y netcat
 apt-get install -q -y ceph-deploy
 
