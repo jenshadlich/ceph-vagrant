@@ -22,7 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     config.vm.provider 'virtualbox' do |v|
         v.customize ['modifyvm', :id, '--name', 'trusty64-ceph-infernalis']
-        v.customize ['modifyvm', :id, '--cpus', '2']
+        v.customize ['modifyvm', :id, '--cpus', '4']
         v.customize ['modifyvm', :id, '--memory', 2048]
     end
 
