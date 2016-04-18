@@ -1,9 +1,6 @@
 #!/bin/bash
 export DEBIAN_FRONTEND=noninteractive
 
-#export DATA_DEVICE=sdb
-#export JOURNAL_DEVICE=sdc
-#export FS_TYPE=xfs
 export CEPH_SERVER_NODE=$(hostname -s)
 export CEPH_RELEASE=infernalis
 export CEPH_RGW_PORT=8888
@@ -41,20 +38,18 @@ ceph-deploy osd activate ${CEPH_SERVER_NODE}:/var/local/osd0
 ceph-deploy osd prepare ${CEPH_SERVER_NODE}:/var/local/osd1
 ceph-deploy osd activate ${CEPH_SERVER_NODE}:/var/local/osd1
 
-#ceph-deploy disk --fs-type ${FS_TYPE} zap ${CEPH_SERVER_NODE}:${DATA_DEVICE}
-#ceph-deploy disk --fs-type ${FS_TYPE} zap ${CEPH_SERVER_NODE}:${JOURNAL_DEVICE}
-#ceph-deploy osd --fs-type ${FS_TYPE} create ${CEPH_SERVER_NODE}:${DATA_DEVICE}:${JOURNAL_DEVICE}
-
-# version
+# print version
 ceph -v
 
 echo "Wait 5 seconds ..."
 sleep 5
 
-# health
+# print health
 ceph -s
 
-echo "Done CEPH."
+echo "##############"
+echo "# Done CEPH. #"
+echo "##############"
 
 ceph-deploy install --rgw ${CEPH_SERVER_NODE}
 ceph-deploy rgw create ${CEPH_SERVER_NODE}
@@ -87,4 +82,6 @@ radosgw-admin subuser create --uid=testuser --subuser=master:testuser --rgw-regi
 radosgw-admin key create --subuser=master:testuser --key-type=s3 --access-key="F6RMEXCDZ84QH5KB1OHN" --secret="LXyAPRkeuYh7zyVF8x0wsFSUEJDQB0ukHLuC2ihS" --rgw-region=default --rgw-zone=default
 radosgw-admin subuser modify --access=readwrite --subuser=master:testuser --rgw-region=default --rgw-zone=default
 
-echo "Done CEPH OBJECT GATEWAY."
+echo "############################"
+echo "# Done CEPH OBJECT GATEWAY.#"
+echo "############################"
