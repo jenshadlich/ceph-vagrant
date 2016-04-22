@@ -2,6 +2,8 @@
 
 Installs a single-node ceph cluster.
 
+## Supported versions
+
 Ceph + Object storage (rgw):
 - Infernalis
 - Jewel
