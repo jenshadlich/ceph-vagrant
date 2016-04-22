@@ -6,7 +6,3 @@ Installs a single-node ceph cluster.
 ```
 vagrant plugin install vagrant-hostmanager
 ```
-
-## TODO
-
-- [ ] Add RadosGW
