@@ -87,3 +87,6 @@ radosgw-admin subuser modify --access=readwrite --subuser=master:testuser --rgw-
 echo "############################"
 echo "# Done CEPH OBJECT GATEWAY.#"
 echo "############################"
+
+# clean up
+apt-get autoremove -q -y
