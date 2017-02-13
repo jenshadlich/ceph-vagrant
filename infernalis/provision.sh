@@ -79,7 +79,7 @@ radosgw-admin user create --uid=master --display-name="master" --access-key="GMG
 echo "Create subuser 'master:testuser'"
 radosgw-admin subuser create --uid=testuser --subuser=master:testuser --rgw-region=default --rgw-zone=default
 radosgw-admin key create --subuser=master:testuser --key-type=s3 --access-key="F6RMEXCDZ84QH5KB1OHN" --secret="LXyAPRkeuYh7zyVF8x0wsFSUEJDQB0ukHLuC2ihS" --rgw-region=default --rgw-zone=default
-radosgw-admin subuser modify --access=readwrite --subuser=master:testuser --rgw-region=default --rgw-zone=default
+radosgw-admin subuser modify --access=full --subuser=master:testuser --rgw-region=default --rgw-zone=default
 
 echo "############################"
 echo "# Done CEPH OBJECT GATEWAY.#"
