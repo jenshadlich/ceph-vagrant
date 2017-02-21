@@ -78,11 +78,10 @@ echo "radosgw launched"
 
 echo ""
 echo "Create user 'master'"
-radosgw-admin user create --uid=master --display-name="master" --access-key="GMGR882QK9J3346TICDX" --secret="edd7NaBJWhPsVKue3eH89K337aQ6UNdBF83PZDNu" --rgw-region=default --rgw-zone=default
+radosgw-admin user create --uid=master --display-name="master" --key-type=s3 --access-key="GMGR882QK9J3346TICDX" --secret="edd7NaBJWhPsVKue3eH89K337aQ6UNdBF83PZDNu"
 echo "Create subuser 'master:testuser'"
-radosgw-admin subuser create --uid=testuser --subuser=master:testuser --rgw-region=default --rgw-zone=default
-radosgw-admin key create --subuser=master:testuser --key-type=s3 --access-key="F6RMEXCDZ84QH5KB1OHN" --secret="LXyAPRkeuYh7zyVF8x0wsFSUEJDQB0ukHLuC2ihS" --rgw-region=default --rgw-zone=default
-radosgw-admin subuser modify --access=full --subuser=master:testuser --rgw-region=default --rgw-zone=default
+radosgw-admin subuser create --uid=testuser --subuser=master:testuser --key-type=s3 --access-key="F6RMEXCDZ84QH5KB1OHN" --secret="LXyAPRkeuYh7zyVF8x0wsFSUEJDQB0ukHLuC2ihS"
+radosgw-admin subuser modify --access=full --subuser=master:testuser
 
 echo "############################"
 echo "# Done CEPH OBJECT GATEWAY.#"
