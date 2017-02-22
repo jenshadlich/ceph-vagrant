@@ -87,5 +87,13 @@ echo "############################"
 echo "# Done CEPH OBJECT GATEWAY.#"
 echo "############################"
 
+echo ""
+echo "Grant admin capabilities"
+radosgw-admin caps add --uid master --caps "buckets=*"
+radosgw-admin caps add --uid master --caps "metadata=*"
+radosgw-admin caps add --uid master --caps "usage=*"
+radosgw-admin caps add --uid master --caps "users=*"
+echo "Done"
+
 # clean up
 apt-get autoremove -q -y

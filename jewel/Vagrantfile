@@ -26,6 +26,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         v.customize ['modifyvm', :id, '--memory', 2048]
     end
 
+    config.vm.provision "file", source: "../files/user_info.sh", destination: "user_info.sh"
+    config.vm.provision "shell", inline: "chmod +x user_info.sh"
+
     config.vm.provision 'shell', path: 'provision.sh'
 
 end
