@@ -27,7 +27,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     config.vm.provision "file", source: "../files/user_info.sh", destination: "user_info.sh"
+    config.vm.provision "file", source: "../files/usage.sh", destination: "usage.sh"
     config.vm.provision "shell", inline: "chmod +x user_info.sh"
+    config.vm.provision "shell", inline: "chmod +x usage.sh"
 
     config.vm.provision 'shell', path: 'provision.sh'
 

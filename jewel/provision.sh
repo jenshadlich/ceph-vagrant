@@ -11,6 +11,7 @@ echo deb http://download.ceph.com/debian-${CEPH_RELEASE}/ $(lsb_release -sc) mai
 
 apt-get update -q > /dev/null
 apt-get install -q -y netcat
+apt-get install -q -y jq
 apt-get install -q -y ceph-deploy
 
 ceph-deploy install --release ${CEPH_RELEASE} ${CEPH_SERVER_NODE}
