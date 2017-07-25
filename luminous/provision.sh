@@ -41,6 +41,8 @@ ceph-deploy osd activate ${CEPH_SERVER_NODE}:/var/local/osd0
 ceph-deploy osd prepare ${CEPH_SERVER_NODE}:/var/local/osd1
 ceph-deploy osd activate ${CEPH_SERVER_NODE}:/var/local/osd1
 
+ceph-deploy admin ${CEPH_SERVER_NODE}
+
 # print version
 ceph -v
 
