@@ -43,6 +43,9 @@ ceph-deploy osd activate ${CEPH_SERVER_NODE}:/var/local/osd1
 
 ceph-deploy admin ${CEPH_SERVER_NODE}
 
+# mandatory with luminous
+ceph-deploy mgr create ${CEPH_SERVER_NODE}
+
 # print version
 ceph -v
 
