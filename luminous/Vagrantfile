@@ -26,6 +26,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         v.customize ['modifyvm', :id, '--memory', 2048]
     end
 
+    config.vm.provision "file", source: "../scripts/bucket_info.sh", destination: "bucket_info.sh"
+    config.vm.provision "file", source: "../scripts/bucket_list.sh", destination: "bucket_list.sh"
+    config.vm.provision "shell", inline: "chmod +x bucket_info.sh"
+    config.vm.provision "shell", inline: "chmod +x bucket_list.sh"
+
     config.vm.provision "file", source: "../scripts/user_info.sh", destination: "user_info.sh"
     config.vm.provision "file", source: "../scripts/usage.sh", destination: "usage.sh"
     config.vm.provision "shell", inline: "chmod +x user_info.sh"
